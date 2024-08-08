@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 자료형</title>
+    <script>
+        console.log("출력!~ Hello, world!");
+        /*
+        ## 자료형
+        1) 문자열 : '', "", ``(템플릿 문자열)
+        2) 숫자형 : 정수, 실수 모두 포함한 숫자
+        3) 불린형 : true, false(0을 제외한 모든 숫자를 true로 처리)
+        4) 함수형 : function() {}, 선언형 함수, 표현형 함수 / 익명 함수
+        5) 객체형 : 객체형은 종류가 매우 많음
+            5-1) Object
+            5-2) JSON
+            5-3) Array(배열)
+            5-4) HTML 객체
+            5-5) null 객체 - 레퍼런스 변수가 아무 객체도 가리키지 않음을 나타냄
+        6) undefined
+            - 변수를 선언한 후에 초기화하지 않으면 undefined
+        7) Symbol : 데이터의 유일성 보장을 위해 
+        */
+        // 문자열 자료형
+        let str = "대한민국"; // 세미콜론 없어도 에러가 나지 않음
+        console.log(str);
+        console.log(typeof str);
+        console.log("------------------");
+
+        let mart = "우리동네 마트는 '아줌마마트'입니다.";
+        let say = '아버지가 말씀하셨다. "자~ 용돈이다."';
+        console.log(mart);
+        console.log(say);
+
+        console.log("--------- 백틱 사용(템플릿 리터럴) ---------");
+        let age = 25;
+        console.log("당신의 나이는 " + age + "살이고, 10년 후에는 " + (age + 10) + "살이다.");
+
+        let temp = `Hello, world!`;
+        console.log(temp);
+        console.log(`당신의 나이는 ${age}살이고, 10년 후에는 ${age + 10}살이다.`);
+
+        let story = "대한민국\n";
+        story += "Korea";
+
+        story = `대한민국
+Korea
+        2024년 파리 올림픽`;
+        console.log(story);
+        console.log("------------------");
+
+        // 숫자 자료형
+        let number = 12;
+        console.log(typeof (number));
+        console.log(`나이는 ${number}`); // +로 결합해서 출력해도 됨
+        console.log(number / 5);
+        console.log("------------------");
+
+        // 불린형
+        let bool = true;
+        console.log(typeof bool);
+        console.log(10 > 20);
+        if (1) console.log('1은 true와 같다.');
+        console.log("------------------");
+
+        // falsy 값 
+        /* null, undefined, NaN, "" */
+        if (null) {
+            console.log('null은 참');
+        } else {
+            console.log('null은 거짓');
+        }
+
+        if ("값") console.log(`값이 들어있는 문자열은 참이다.`);
+        if ("") console.log(`값이 들어있지 않은 문자열은 거짓이다.`);
+        if ([]) console.log(`[]은 참이다. (주의)`);
+        console.log("------------------");
+
+        // 함수 정의 (선언적 함수)
+        function add(a, b) {
+            return a + b;
+        }
+
+        // 함수 호출
+        let result = add(15, 20);
+        console.log(`함수 호출의 결과 : ${result}`);
+
+        let sum = add;
+        console.log(`함수 호출의 결과 : ${sum(21, 11)}`);
+
+        // 표현함수
+        let minus = function (a, b) {
+            return a - b;
+        };
+
+        console.log(`함수 minus 호출의 결과 : ${minus(21, 11)}`);
+        console.log("------------------");
+        let cnt = 0;
+        // setInterval(function () {
+        //     console.log('출력됨=> ' + cnt++);
+        // }, 1000);
+
+        console.log("add 함수 : " + typeof add);
+        console.log("minus 함수 : " + typeof minus);
+        console.log("------------------");
+
+        // -------------- Javascript Object -------------
+        let obj = { name: '홍길동', age: 25 };
+        console.log(typeof obj);
+        console.log('이름 : ' + obj['name']);
+        console.log('나이 : ' + obj.age);
+        console.log(obj);
+
+        let obj2 = {
+            name: '저팔계',
+            age: 30,
+            sayHello: function () {
+                console.log(this.name + ", " + this.age);
+            }
+        };
+        obj2.sayHello();
+        console.log(obj2.age);
+        console.log(typeof obj2); // object 
+        // alert(typeof obj2); // object
+        console.log("------------------");
+
+        // -------------- JSON : 비동기 통신할 때 사용해봄! ------------
+        let obj3 = { "name": '손오공', "age": 20 };
+        console.log(typeof obj3);
+        console.log('이름 : ' + obj3['name']);
+        console.log('나이 : ' + obj3.age);
+        console.log(obj3);
+        console.log("------------------");
+        // alert(obj3);
+
+        let obj4 = {
+            "name": '사오정',
+            "age": 30,
+            "sayHello": function () {
+                console.log(this.name + ", " + this.age);
+            }
+        }
+
+        obj4.sayHello();
+        console.log("------------------");
+
+        // -------------- array ------------
+        let ary = [2, 4, 6, 8, 10];
+        console.log(typeof ary);
+        console.log(ary[0]);
+        //alert(ary);
+
+        // -------------- null 객체 ------------
+        console.log("--------- null 정보 --------");
+        let nullData = null;
+        console.log("null 데이터의 타입 : " + typeof nullData);
+        console.log("nullData 변수의 값 : " + nullData);
+
+
+        // -------------- undefined 객체 ------------
+        console.log("--------- undefined 정보 --------");
+        let notInit;
+        console.log(notInit);
+        console.log(typeof notInit);
+
+        // -------------- Symbol 객체 ------------
+        console.log("--------- Symbol 정보 --------");
+        let mySymbol = Symbol();
+        console.log(mySymbol);
+        console.log(typeof mySymbol);
+
+    </script>
+</head>
+
+<body>
+
+    <h2 id="header">자바스크립트 자료형</h2>
+    <p>처리 결과는 브라우저의 콘솔창에서!!</p>
+    <script>
+        // -------------- HTML 객체 ------------
+        // 바디 태그 아래에
+        let tag = document.getElementById("header"); // id가 header인 태그의 요소를 가져옴
+        console.log(tag);
+        console.log(typeof tag);
+        //alert(tag);
+        //tag.innerHTML = "<span style='color:red'>바뀌었냐??<span>"; // 자바스크립트 자료형 -> 바뀌었냐??로 보임
+        tag.innerText = "<span style='color:red'>바뀌었냐??<span>";
+
+
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-// 1) defer 없는 상태의 스크립트 코드가 샐행되었을 때
+// 1) defer 없는 상태의 스크립트 코드가 실행되었을 때
 let btn = document.getElementById("btn"); // HTML Object
 let del = document.getElementById("del"); // HTML Object
 let printImg = document.getElementById("printImg"); // HTML Object

@@ -59,5 +59,5 @@ else {
 }
 
 // confirm() - true, false로 결과 반환
-let cf = confirm("처리를 진행하까요?");
+let cf = confirm("처리를 진행할까요?");
 console.log(cf);

@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* Code Here */
+
+div {
+  width: 850px;
+  margin: 0 auto;
+}
+span {
+  color : red;
+
+}
+.title {
+  text-align: center;
+}
+input[type="text"]:hover, textarea:hover {
+  background-color: rgba(255, 255, 0, 50);
+
+}
+
+table {
+  width : 800px;
+  border-spacing: 0;
+  border : 1px dotted gray;
+}
+
+table th, td {
+  border : 1px dotted gray;
+  padding : 10px;
+}
+
+table th {
+  text-align: left;
+  font-weight: bold;
+}
+
+textarea {
+  width : 770px;
+  height : 100px;
+  resize : none;
+}
+
+td.btn {
+  text-align: center;
+}
+
+input[type="text"] {
+  width : 300px;
+}

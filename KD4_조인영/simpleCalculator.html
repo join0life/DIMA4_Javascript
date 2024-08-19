@@ -1,0 +1,71 @@
+<!-- 3) 간단한 계산기 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 계산기</title>
+
+</head>
+
+<body>
+    <fieldset>
+        <legend>
+            <h2>간단한 계산기</h2>
+        </legend>
+        <div>
+            <input type="text" id="x">
+            <select id="operator">
+                <option value="+"> 더하기 </option>
+                <option value="-"> 빼기 </option>
+                <option value="*"> 곱하기 </option>
+                <option value="/"> 나누기 </option>
+                <option value="**"> 거듭제곱 </option>
+            </select>
+            <input type="text" id="y">
+            <input type="button" value="=" id="calculator">
+            <input type="button" value="C" id="clear">
+            <input type="text" id="result" readonly>
+        </div>
+    </fieldset>
+    <script>
+        // Code Here
+        let x = document.getElementById('x');
+        let y = document.getElementById('y');
+        let result = document.getElementById("result");
+        let operator = document.getElementById("operator");
+
+        document.getElementById("calculator").addEventListener('click', calc);
+        document.getElementById("clear").addEventListener('click', clear)
+
+        function calc() {
+            if (isNaN(x.value) || isNaN(y.value)) {
+                alert("숫자만 입력하세요");
+                clear();
+                x.focus();
+                return;
+            }
+
+            if (operator.value == "+")
+                result.value = parseInt(x.value) + parseInt(y.value);
+            else if (operator.value == "-")
+                result.value = x.value - y.value;
+            else if (operator.value == "*")
+                result.value = x.value * y.value;
+            else if (operator.value == "/")
+                result.value = x.value / y.value;
+            else if (operator.value == "**")
+                result.value = x.value ** y.value;
+
+        }
+
+        function clear() {
+            x.value = "";
+            y.value = "";
+            result.value = "";
+        }
+
+    </script>
+</body>

@@ -1,0 +1,30 @@
+fieldset {
+    width: 600px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px dotted gray;
+}
+
+
+input[type="button"] {
+    width: 150px;
+    padding: 10px;
+    border-radius: 50px;
+    text-align: center;
+    background-color: lightgray;
+    margin: 5px;
+    font-weight: bold;
+    border: 0px;
+    color: white;
+    margin-top: 18px;
+}
+
+input[type="button"]:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input.pointColor {
+    background: linear-gradient(45deg, rgba(78, 197, 217, 1), rgba(38, 59, 151, 1));
+}

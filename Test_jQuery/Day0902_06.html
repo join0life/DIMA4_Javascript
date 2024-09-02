@@ -8,6 +8,8 @@
     <script src="./script/jquery-3.7.1.min.js"></script>
     <script>
         $(function () {
+            // 특정 요소를 찾을 때마다 점점 요소 개수의 범위가 좁아짐
+            // end() : 그 이전 상태의 선택으로 되돌리는 함수
             $('ul').find('.item1').css('background-color', 'red')
                 .end() // 마지막으로 선택한 것 이전으로 돌아감 ('ul'로 되돌아감)
                 .find('.item3').css('background-color', 'blue')

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text(), html()</title>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // text() : text를 읽거나 쓰는 메소드(inner data)
+            // html() : hmtl을 읽거나 쓰는 메소드(inner data)
+            let myTag = `이것은 <b>데이터</b>입니다.`;
+            let myText = $('#myText').text(); // 괄호 안에 아무것도 안적으면 값을 읽어오는 코드
+            $('p#target').text(myText); // 괄호 안의 값을 집어 넣는 코드
+
+            $('p#target').html(myTag); // 괄호 안의 값을 집어 넣는 코드
+
+            // attr() : 속성 데이터를 읽거나 쓰는 메소드
+            // attr(속성명) : 속성값을 읽어옴
+            // attr(속성명, 값) : 속성값을 쓰기
+            let temp = $('p>img').attr('src');
+            let temp2 = $('p>img').attr('alt');
+
+            $('p>img').attr('src', './images/cat1.png');
+            $('p>img').attr('alt', '고양이1');
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>text(), html(), attr()</h2>
+    <p id="myText">무궁화 꽃이 피었습니다.</p>
+    <p id="target"></p>
+    <p>
+        <img src="./images/teddybear.png" alt="곰인형">
+    </p>
+
+</body>
+
+</html>

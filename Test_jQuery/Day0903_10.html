@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소의 추가</title>
+    <style>
+        div#app,
+        div#app2,
+        div#app3 {
+            border: 1px solid blue;
+
+        }
+
+        img {
+            width: 64px;
+            height: 64px;
+
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            // 1 )추가 버튼 클릭할 때 
+            $("#append").on('click', function () {
+                let myimg = ['./images/cat1.png',
+                    './images/cat2.png',
+                    './images/cat3.png',
+                    './images/santa.png',
+                    './images/teddybear.png'];
+                let choice = Math.floor(Math.random() * myimg.length);
+                let tag = `<img src="${myimg[choice]}" alt="이모지">`;
+
+                $('div#app').append(tag);   // rendering할 수 있는 태그값을 append() 전달
+            });
+
+            // 2) prepend 추가 버튼
+            $('#prepend').on('click', function () {
+                $('div#app2').prepend($('div#app2 img:last')); // 마지막 이미지를 전체 div의 가장 앞으로 옮김
+            });
+
+            // 3) insert 삽입 
+            $('#insert').on('click', function () {
+                $('<img src="./images/santa.png" >').before($('div#app3 img:last')); // 마지막 이미지를 전체 div의 가장 앞으로 옮김
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>요소의 추가(append, appendTo)</h2>
+    <button id="append" title="append : 추가">Append를 이용한 추가</button>
+    <div id="app"></div>
+
+    <h2>요소의 추가(prepend, prependTo)</h2>
+    <button id="prepend" title="prepend : 추가">Prepend를 이용한 추가</button>
+    <div id="app2">
+        <img src="./images/cat1.png" alt="고양이1">
+        <img src="./images/cat2.png" alt="고양이2">
+        <img src="./images/cat3.png" alt="고양이3">
+        <img src="./images/santa.png" alt="산타">
+        <img src="./images/teddybear.png" alt="곰인형">
+    </div>
+
+    <hr>
+    <h2>요소의 삽입(insert, after)</h2>
+    <!-- insertBefore(), insertAfter() -->
+    <button id="insert" title="insert : 삽입">insert를 이용한 삽입</button>
+    <div id="app3">
+        <img src="./images/cat1.png" alt="고양이1">
+        <img src="./images/cat2.png" alt="고양이2">
+    </div>
+</body>
+
+</html>

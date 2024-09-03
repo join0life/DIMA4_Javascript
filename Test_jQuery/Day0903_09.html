@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유효성 검증</title>
+    <style>
+        span {
+            color: red;
+            font-size: 0.8em;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        // 전역변수 선언
+        let id_ok = false;
+        let pwd_ok = false;
+
+        $(function () {
+            check();    // 아이디 비번 체크
+            $('#btn').on('click', function () {
+                // 성별
+                let gender = $('input[type=radio]:checked').val();
+                let hobbyList = $('input[type=checkbox]:checked').val();
+
+                let hobby = '';
+                $('input[type=checkbox]:checked').each(function (index, item) {
+                    // item은 태그. val()은 jQuery() 메소드이므로 적용 불가
+                    // 적용을 하려면 item은 jquery 객체여야 한다!! (ex. $(item))
+                    // item을 jquery 객체로 바꾼다.
+                    hobby += $(item).val() + ' ';
+                })
+                let location = $('select>option:selected').val();
+
+                // 최종 송신
+                if (id_ok && pwd_ok) {
+                    alert("송신 완료");
+                } else {
+                    alert("송신 실패");
+                }
+            });
+        });
+        function check() {
+            $('#userId').on('keyup', function () {
+                let userId = $('#userId').val();
+                if (userId.length < 3 || userId.length > 5) {
+                    $('#id_check').text('아이디는 3~5');
+                    id_ok = false;
+                    return;
+                }
+
+                $('#id_check').text('');
+                id_ok = true;
+            })
+            $('#userPwd').on('keyup', function () {
+                let userPwd = $('#userPwd').val();
+                if (userPwd.length < 3 || userPwd.length > 5) {
+                    $('#pwd_check').text('비밀번호는 3~5');
+                    pwd_ok = false;
+                    return;
+                }
+
+                $('#pwd_check').text('');
+                pwd_ok = true;
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <h2>[ 유효성 검증 ]</h2>
+    <form action="">
+        <table border="1">
+            <tr>
+                <td>아이디</td>
+                <td>
+                    <input type="text" id="userId" placeholder="아이디를 3~5자">
+                    <span id="id_check"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" id="userPwd" placeholder="비밀번호를 3~5자">
+                    <span id="pwd_check"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <input type="radio" name="gender" value="남자"> 남자 &nbsp;
+                    <input type="radio" name="gender" value="여자" checked> 여자
+                </td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="수영" checked> 수영 &nbsp;
+                    <input type="checkbox" name="hobby" value="등산"> 등산 &nbsp;
+                    <input type="checkbox" name="hobby" value="자전거"> 자전거 &nbsp;
+                    <input type="checkbox" name="hobby" value="뜨개질"> 뜨개질 &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>사는 지역</td>
+                <td>
+                    <select name="location" id="location">
+                        <option value="서울">서울</option>
+                        <option value="부산">부산</option>
+                        <option value="광주">광주</option>
+                        <option value="제주">제주</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="button" id="btn" value="확인">
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

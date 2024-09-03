@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each를 이용한 반복처리</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            float: left;
+            margin: 5px;
+
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        let color = ['red', 'orange', 'cyan', 'silver', 'blue'];
+        $(function () {
+            let cnt = $('div').length;  // number
+
+            // $.each('div', function () { });와 같은 표현식
+            $('div').each(function (index) {
+                $(this).css('background', color[index]);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>each를 이용한 반복처리</h2>
+    <div>하나</div>
+    <div>둘</div>
+    <div>셋</div>
+    <div>넷</div>
+    <div>다섯</div>
+</body>
+
+</html>

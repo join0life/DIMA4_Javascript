@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소의 삭제</title>
+    <style>
+        div#app1,
+        div#app2 {
+            border: 1px solid blue;
+
+        }
+
+        img {
+            width: 64px;
+            height: 64px;
+
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#remove').on('click', function () {
+                $('#app1 img:first').remove();
+            });
+
+            // 끝태그가 있어야 그 안쪽의 요소를 삭제
+            $('#empty').on('click', function () {
+                $('#app2').empty();
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2>요소의 삭제(remove) - 특정 객체의 요소 한 개 삭제</h2>
+    <button id="remove" title="remove : 삭제">Remove를 이용한 삭제</button>
+    <div id="app1">
+        <img src="./images/cat1.png" alt="고양이1">
+        <img src="./images/cat2.png" alt="고양이2">
+        <img src="./images/cat3.png" alt="고양이3">
+        <img src="./images/santa.png" alt="산타">
+        <img src="./images/teddybear.png" alt="곰인형">
+    </div>
+
+    <br>
+    <hr>
+    <h2>요소의 삭제(empty) - 특정 객체의 요소 삭제</h2>
+    <button id="empty" title="empty : 삭제">empty를 이용한 삭제</button>
+    <div id="app2">
+        <img src="./images/cat1.png" alt="고양이1">
+        <img src="./images/cat2.png" alt="고양이2">
+        <img src="./images/cat3.png" alt="고양이3">
+        <img src="./images/santa.png" alt="산타">
+        <img src="./images/teddybear.png" alt="곰인형">
+    </div>
+
+</body>
+
+</html>

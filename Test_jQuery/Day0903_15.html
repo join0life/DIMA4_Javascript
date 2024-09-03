@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+    <style>
+        table {
+            width: 1000px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            border-collapse: collapse;
+
+        }
+
+        thead>tr {
+            background-color: #50a9ef;
+        }
+
+        tr {
+            border-bottom: 1px dotted gray;
+        }
+
+        td,
+        th {
+            padding: 5px;
+        }
+
+        tbody tr:hover {
+            background-color: #eee;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./script/jquery-3.7.1.min.js"></script>
+    <script>
+        // 서버로부터 받은 데이터라고 침!
+        let receivedData = [
+            { "name": "홍길동", "email": "hong@naver.com", "phone": "010-1111-2222" }
+            , { "name": "전우치", "email": "jeon@naver.com", "phone": "010-2222-2332" }
+            , { "name": "임꺽정", "email": "lim@naver.com", "phone": "010-1155-2442" }
+            , { "name": "손오공", "email": "son@naver.com", "phone": "010-1113-2222" }
+            , { "name": "사오정", "email": "ojeong@naver.com", "phone": "010-1231-2643" }
+        ];
+        $(function () {
+            $('#receive').on('click', init);
+
+
+        });
+        function init() {
+            let name = receivedData[0]["name"];
+            let email = receivedData[0]["email"];
+            let phone = receivedData[0]["phone"];
+
+            // tbody에 삽입될 tag를 만드는 코드
+            let final = `
+                <tr>
+                    <td class="box"><input type="checkbox"></td>
+                    <td class="name">${name}</td>
+                    <td class="email">${email}</td>
+                    <td class="phone">${phone}</td>
+                    <td class="btn"><input type="button" class="btn"></td>
+                </tr>
+                `;
+
+            // $('tbody').html(final);
+
+            $('tbody').each(function (index) {
+                $(this).html(receivedData[index]);
+            });
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h2>[연습문제]</h2>
+    <div id="active">
+        <button id="receive">수신</button><br><br>
+        <input type="checkbox" id="checkAll">
+        <input type="button" id="deleteMemeber" value="삭제">
+    </div><br>
+
+    <!-- 고객 목록 -->
+    <div id="member">
+        <table>
+            <thead>
+                <tr>
+                    <th>선택</th>
+                    <th>이름</th>
+                    <th>이메일</th>
+                    <th>전화번호</th>
+                    <th>버튼</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+</body>
+
+</html>

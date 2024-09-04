@@ -34,63 +34,63 @@
     </style>
     <script src="./script/jquery-3.7.1.min.js"></script>
     <script>
-       // 서버로부터 받은 데이터라고 침!
-let receivedData = [
-    { "name": "홍길동", "email": "hong@naver.com", "phone": "010-1111-2222" }
-    , { "name": "전우치", "email": "jeon@naver.com", "phone": "010-2222-2332" }
-    , { "name": "임꺽정", "email": "lim@naver.com", "phone": "010-1155-2442" }
-    , { "name": "손오공", "email": "son@naver.com", "phone": "010-1113-2222" }
-    , { "name": "사오정", "email": "ojeong@naver.com", "phone": "010-1231-2643" }
-];
-$(function () {
-    // 1) receive 버튼에 이벤트 설정해서 초기화
-    $('#receive').on('click', init);
-
-
-    // 2) 전체 선택 상자를 체크하면 모두 체크
-    $('#checkAll').on('click', function () {
-        if ($(this).is(':checked')) {
-            $('tbody input:checkbox').prop('checked', true); // input[type=checkbox]와 같음
-        } else {
-            $('tbody input:checkbox').prop('checked', false);
+        // receivedData : 서버로부터 받은 데이터라고 가정
+        let receivedData = [
+            { "name": "홍길동", "email": "hong@naver.com", "phone": "010-1111-2222" }
+            , { "name": "전우치", "email": "jeon@naver.com", "phone": "010-2222-2332" }
+            , { "name": "임꺽정", "email": "lim@naver.com", "phone": "010-1155-2442" }
+            , { "name": "손오공", "email": "son@naver.com", "phone": "010-1113-2222" }
+            , { "name": "사오정", "email": "ojeong@naver.com", "phone": "010-1231-2643" }
+        ];
+        $(function () {
+            // 1) receive 버튼에 이벤트 설정해서 초기화
+            $('#receive').on('click', init);
+        
+        
+            // 2) 전체 선택 상자를 체크하면 모두 체크
+            $('#checkAll').on('click', function () {
+                if ($(this).is(':checked')) {
+                    $('tbody input:checkbox').prop('checked', true); // input[type=checkbox]와 같음
+                } else {
+                    $('tbody input:checkbox').prop('checked', false);
+                }
+            });
+            // 3) 삭제 버튼 클릭하면 체크된 명단 삭제
+            $('#deleteMemeber').on('click', function () {
+                let checkedItem = $('tbody input[type=checkbox]:checked').parent().parent(); // tr을 삭제해야 함
+                checkedItem.remove();
+            });
+        
+        
+        });
+        function init() {
+            let final = '';
+        
+            $.each(receivedData, function (index, item) {
+                let name = item['name'];
+                let email = item['email'];
+                let phone = item['phone'];
+        
+                // tbody에 삽입될 tag를 만드는 코드
+                final += `
+                <tr>
+                    <td class="box"><input type="checkbox"></td>
+                    <td class="name">${name}</td>
+                    <td class="email">${email}</td>
+                    <td class="phone">${phone}</td>
+                    <td class="btn"><input type="button" class="btn" value="삭제"></td> 
+                </tr>
+                `;
+            })
+        
+            $('tbody').html(final); // class="btn"이 이 순간에 메모리에 DOM으로 올라감
+            $('.btn').on('click', deleteItem); // 위 코드가 있어야 btn에 이벤트를 걸 수 있음 
+        
         }
-    });
-    // 3) 삭제 버튼 클릭하면 체크된 명단 삭제
-    $('#deleteMemeber').on('click', function () {
-        let checkedItem = $('tbody input[type=checkbox]:checked').parent().parent(); // tr을 삭제해야 함
-        checkedItem.remove();
-    });
-
-
-});
-function init() {
-    let final = '';
-
-    $.each(receivedData, function (index, item) {
-        let name = item['name'];
-        let email = item['email'];
-        let phone = item['phone'];
-
-        // tbody에 삽입될 tag를 만드는 코드
-        final += `
-        <tr>
-            <td class="box"><input type="checkbox"></td>
-            <td class="name">${name}</td>
-            <td class="email">${email}</td>
-            <td class="phone">${phone}</td>
-            <td class="btn"><input type="button" class="btn" value="삭제"></td> 
-        </tr>
-        `;
-    })
-
-    $('tbody').html(final); // class="btn"이 이 순간에 메모리에 DOM으로 올라감
-    $('.btn').on('click', deleteItem); // 위 코드가 있어야 btn에 이벤트를 걸 수 있음 
-
-}
-function deleteItem() {
-    // if (confirm('정말로 삭제하시겠습니까?'))
-    $(this).parent().parent().remove() // this : 버튼 그 자체 
-}
+        function deleteItem() {
+            // if (confirm('정말로 삭제하시겠습니까?'))
+            $(this).parent().parent().remove() // this : 버튼 그 자체 
+        }
     </script>
 </head>
 
